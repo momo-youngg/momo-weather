@@ -16,6 +16,9 @@
 		FA86CDA427A3F27D007826D7 /* MomoWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDA327A3F27D007826D7 /* MomoWeatherTests.swift */; };
 		FA86CDAE27A3F27D007826D7 /* MomoWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDAD27A3F27D007826D7 /* MomoWeatherUITests.swift */; };
 		FA86CDB027A3F27D007826D7 /* MomoWeatherUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDAF27A3F27D007826D7 /* MomoWeatherUITestsLaunchTests.swift */; };
+		FA86CDBE27A3F389007826D7 /* OpenWeatherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDBD27A3F389007826D7 /* OpenWeatherClient.swift */; };
+		FA86CDC127A40C64007826D7 /* OpenWeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDC027A40C64007826D7 /* OpenWeatherResponse.swift */; };
+		FA86CDC427A466B8007826D7 /* OpenWeatherClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDC327A466B8007826D7 /* OpenWeatherClientTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		FA86CDA927A3F27D007826D7 /* MomoWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MomoWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA86CDAD27A3F27D007826D7 /* MomoWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoWeatherUITests.swift; sourceTree = "<group>"; };
 		FA86CDAF27A3F27D007826D7 /* MomoWeatherUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoWeatherUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FA86CDBD27A3F389007826D7 /* OpenWeatherClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherClient.swift; sourceTree = "<group>"; };
+		FA86CDC027A40C64007826D7 /* OpenWeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherResponse.swift; sourceTree = "<group>"; };
+		FA86CDC327A466B8007826D7 /* OpenWeatherClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherClientTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,8 @@
 		FA86CD8B27A3F27C007826D7 /* MomoWeather */ = {
 			isa = PBXGroup;
 			children = (
+				FA86CDBF27A3F90E007826D7 /* model */,
+				FA86CDBC27A3F366007826D7 /* client */,
 				FA86CD8C27A3F27C007826D7 /* AppDelegate.swift */,
 				FA86CD8E27A3F27C007826D7 /* SceneDelegate.swift */,
 				FA86CD9027A3F27C007826D7 /* ViewController.swift */,
@@ -113,6 +121,7 @@
 		FA86CDA227A3F27D007826D7 /* MomoWeatherTests */ = {
 			isa = PBXGroup;
 			children = (
+				FA86CDC227A466A2007826D7 /* client */,
 				FA86CDA327A3F27D007826D7 /* MomoWeatherTests.swift */,
 			);
 			path = MomoWeatherTests;
@@ -125,6 +134,30 @@
 				FA86CDAF27A3F27D007826D7 /* MomoWeatherUITestsLaunchTests.swift */,
 			);
 			path = MomoWeatherUITests;
+			sourceTree = "<group>";
+		};
+		FA86CDBC27A3F366007826D7 /* client */ = {
+			isa = PBXGroup;
+			children = (
+				FA86CDBD27A3F389007826D7 /* OpenWeatherClient.swift */,
+			);
+			path = client;
+			sourceTree = "<group>";
+		};
+		FA86CDBF27A3F90E007826D7 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				FA86CDC027A40C64007826D7 /* OpenWeatherResponse.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		FA86CDC227A466A2007826D7 /* client */ = {
+			isa = PBXGroup;
+			children = (
+				FA86CDC327A466B8007826D7 /* OpenWeatherClientTests.swift */,
+			);
+			path = client;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +292,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA86CD9127A3F27C007826D7 /* ViewController.swift in Sources */,
+				FA86CDC127A40C64007826D7 /* OpenWeatherResponse.swift in Sources */,
 				FA86CD8D27A3F27C007826D7 /* AppDelegate.swift in Sources */,
 				FA86CD8F27A3F27C007826D7 /* SceneDelegate.swift in Sources */,
+				FA86CDBE27A3F389007826D7 /* OpenWeatherClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA86CDA427A3F27D007826D7 /* MomoWeatherTests.swift in Sources */,
+				FA86CDC427A466B8007826D7 /* OpenWeatherClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
