@@ -29,7 +29,7 @@ class WeatherTableViewCell: UITableViewCell {
     
     //TODO 매끄럽지 못한 배경색 및 코너 라운딩 이부분 너무 깔끔하지 못함
     func setBackgroundView() {
-        somethingView.backgroundColor = .systemPink
+        GradientUtil.setGradientToView(gradientColor: GradientUtil.GradientColor.blue, view: somethingView)
         somethingView.layer.cornerRadius = 15;
         somethingView.layer.masksToBounds = true;
     }

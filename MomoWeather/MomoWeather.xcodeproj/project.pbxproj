@@ -21,6 +21,7 @@
 		FA86CDC927A48DC0007826D7 /* WeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDC827A48DC0007826D7 /* WeatherTableViewController.swift */; };
 		FA86CDCC27A48EE0007826D7 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDCB27A48EE0007826D7 /* WeatherTableViewCell.swift */; };
 		FA86CDDA27A5A228007826D7 /* WeatherMainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDD927A5A228007826D7 /* WeatherMainNavigationController.swift */; };
+		FA86CDDD27A5AA56007826D7 /* GradientUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDDC27A5AA56007826D7 /* GradientUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		FA86CDC827A48DC0007826D7 /* WeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewController.swift; sourceTree = "<group>"; };
 		FA86CDCB27A48EE0007826D7 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		FA86CDD927A5A228007826D7 /* WeatherMainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMainNavigationController.swift; sourceTree = "<group>"; };
+		FA86CDDC27A5AA56007826D7 /* GradientUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		FA86CD8B27A3F27C007826D7 /* MomoWeather */ = {
 			isa = PBXGroup;
 			children = (
+				FA86CDDB27A5AA4C007826D7 /* util */,
 				FA86CDCA27A48EC9007826D7 /* view */,
 				FA86CDC527A47DEC007826D7 /* viewcontroller */,
 				FA86CDBF27A3F90E007826D7 /* model */,
@@ -180,6 +183,14 @@
 				FA86CDCB27A48EE0007826D7 /* WeatherTableViewCell.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		FA86CDDB27A5AA4C007826D7 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				FA86CDDC27A5AA56007826D7 /* GradientUtil.swift */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA86CDDA27A5A228007826D7 /* WeatherMainNavigationController.swift in Sources */,
+				FA86CDDD27A5AA56007826D7 /* GradientUtil.swift in Sources */,
 				FA86CDC127A40C64007826D7 /* OpenWeatherResponse.swift in Sources */,
 				FA86CDCC27A48EE0007826D7 /* WeatherTableViewCell.swift in Sources */,
 				FA86CD8D27A3F27C007826D7 /* AppDelegate.swift in Sources */,
