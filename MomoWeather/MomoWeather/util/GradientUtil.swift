@@ -30,6 +30,10 @@ struct GradientUtil {
         static let plum: GradientColor = GradientColor(light: CGColor(red: 233.0/255.0, green: 125.0/255.0, blue: 167.0/255.0, alpha: 1.0),
                                                        mid: CGColor(red: 187.0/255.0, green: 87.0/255.0, blue: 201.0/255.0, alpha: 1.0),
                                                        dark: CGColor(red: 157.0/255.0, green: 62.0/255.0, blue: 226.0/255.0, alpha: 1.0))
+        
+        static let gradientColors: [GradientColor] = [
+            orange, purple, green, blue, plum
+        ]
     }
         
     static func setGradientToView(gradientColor: GradientColor, view: UIView) {

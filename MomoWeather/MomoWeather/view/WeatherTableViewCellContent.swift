@@ -8,6 +8,8 @@
 import UIKit
 
 class WeatherTableViewCellContent: UIView {
+    
+    private static let degree: String = "°C"
             
     @IBOutlet var cityName: UILabel!
     @IBOutlet var weatherIcon: UIImageView!
@@ -18,11 +20,13 @@ class WeatherTableViewCellContent: UIView {
     func setWeatherData(weatherData: CurrentWeatherDataResponse) {
         cityName.text = weatherData.name
         weatherIcon.image = UIImage(systemName: "heart")
-//        weatherData.weather[0].icon
-        temperature.text = String(weatherData.main.temp)
+        temperature.text = "\(String(weatherData.main.temp))\(WeatherTableViewCellContent.degree)"
         humidity.text = String(weatherData.main.humidity)
 
-        GradientUtil.setGradientToView(gradientColor: GradientUtil.GradientColor.blue, view: backgroundView)
+        GradientUtil.setGradientToView(
+            gradientColor: GradientUtil.GradientColor.gradientColors.randomElement() ?? GradientUtil.GradientColor.orange,
+            view: backgroundView
+        )
         
         setTemp(label: cityName)
         setTemp(label: temperature)
