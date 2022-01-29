@@ -7,7 +7,17 @@
 
 import Foundation
 
-struct CurrentWeatherDataResponse: Decodable {
+struct CurrentWeatherDataResponse: Decodable, Hashable {
+    
+    //TODO hashable 수정하기
+    func hash(into hasher: inout Hasher) {
+        
+    }
+
+    static func == (lhs: CurrentWeatherDataResponse, rhs: CurrentWeatherDataResponse) -> Bool {
+        return false
+    }
+    
     
     enum CodingKeys: String, CodingKey {
         case coord, weather, base, main, visibility, wind, clouds, dt, sys, timezone, id, name, cod
