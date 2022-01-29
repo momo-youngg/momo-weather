@@ -19,26 +19,19 @@ class WeatherTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-         self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         loadInitialData()
         
+        // Uncomment the following line to preserve selection between presentations
+        self.clearsSelectionOnViewWillAppear = false
+        self.tableView.separatorStyle = .none
         tableView.dataSource = dataSource
-        var snapshot = NSDiffableDataSourceSnapshot<Section, CurrentWeatherDataResponse>()
-        snapshot.appendSections([.all])
-        snapshot.appendItems(weathersByCity, toSection: .all)
-        dataSource.apply(snapshot, animatingDifferences: false)
     }
     
     // TODO 알잘딱깔센
     func loadInitialData() {
         [
-            "Seoul", "Seoul", "Seoul", "Seoul", "Seoul", "Seoul", "Seoul", "Seoul", "Seoul", "Seoul"
+            "Seoul", "Daejeon", "Deagu", "Jeju", "Busan", "Seoul", "Seoul", "Seoul", "Seoul", "Seoul"
         ].forEach { city in
             openWhetherClient.getCurrentWeatherData(cityName: city) { result, response in
                 guard result else {
@@ -50,28 +43,27 @@ class WeatherTableViewController: UITableViewController {
                 self.dataSource.apply(currentSnapshot)
             }
         }
-
     }
 
     func configureDataSource() -> UITableViewDiffableDataSource<Section, CurrentWeatherDataResponse> {
-
         let cellIdentifier = "weatherTableViewCell"
-
         let dataSource = UITableViewDiffableDataSource<Section, CurrentWeatherDataResponse>(
             tableView: tableView,
-            cellProvider: {  tableView, indexPath, openWhetherWhether in
+            cellProvider: {  tableView, indexPath, weatherData in
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! WeatherTableViewCell
-                
-                //TODO
-                cell.cityName.text = openWhetherWhether.name
-                cell.weather.text = openWhetherWhether.weather[0].main
-                cell.weatherIcon.text = openWhetherWhether.weather[0].icon
-                cell.temperature.text = String(openWhetherWhether.main.temp)
-                cell.humidity.text = String(openWhetherWhether.main.humidity)
+                cell.setWeatherData(weatherData: weatherData)
                 return cell
             }
         )
+        var snapshot = NSDiffableDataSourceSnapshot<Section, CurrentWeatherDataResponse>()
+        snapshot.appendSections([.all])
+        snapshot.appendItems(weathersByCity, toSection: .all)
+        dataSource.apply(snapshot, animatingDifferences: false)
         return dataSource
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

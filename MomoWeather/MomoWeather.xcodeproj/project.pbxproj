@@ -22,6 +22,7 @@
 		FA86CDCC27A48EE0007826D7 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDCB27A48EE0007826D7 /* WeatherTableViewCell.swift */; };
 		FA86CDD027A4A3D8007826D7 /* WeatherTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDCF27A4A3D8007826D7 /* WeatherTableHeaderView.swift */; };
 		FA86CDD227A4B095007826D7 /* WeatherTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDD127A4B095007826D7 /* WeatherTableFooterView.swift */; };
+		FA86CDDA27A5A228007826D7 /* WeatherMainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDD927A5A228007826D7 /* WeatherMainNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		FA86CDCB27A48EE0007826D7 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		FA86CDCF27A4A3D8007826D7 /* WeatherTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableHeaderView.swift; sourceTree = "<group>"; };
 		FA86CDD127A4B095007826D7 /* WeatherTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableFooterView.swift; sourceTree = "<group>"; };
+		FA86CDD927A5A228007826D7 /* WeatherMainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMainNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				FA86CDC827A48DC0007826D7 /* WeatherTableViewController.swift */,
+				FA86CDD927A5A228007826D7 /* WeatherMainNavigationController.swift */,
 			);
 			path = viewcontroller;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA86CDDA27A5A228007826D7 /* WeatherMainNavigationController.swift in Sources */,
 				FA86CDC127A40C64007826D7 /* OpenWeatherResponse.swift in Sources */,
 				FA86CDCC27A48EE0007826D7 /* WeatherTableViewCell.swift in Sources */,
 				FA86CD8D27A3F27C007826D7 /* AppDelegate.swift in Sources */,
