@@ -18,6 +18,7 @@ class WeatherTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        subview.setUp()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -30,23 +30,23 @@ class WeatherTableViewController: UITableViewController {
     
     // TODO 알잘딱깔센
     func loadInitialData() {
-        [
-            "Seoul", "Daejeon", "Deagu", "Jeju", "Busan", "Seoul", "Seoul", "Seoul", "Seoul", "Seoul"
-        ].forEach { city in
-            openWhetherClient.getCurrentWeatherData(cityName: city) { result, response in
-                guard result else {
-                    return
-                }
-                DispatchQueue.main.async {
-                    self.weathersByCity.append(response)
-                    var currentSnapshot = self.dataSource.snapshot()
-                    currentSnapshot.appendItems([response], toSection: .all)
-                    self.dataSource.apply(currentSnapshot)
+        openWhetherClient.getCities()
+            .forEach { city in
+                openWhetherClient.getCurrentWeatherData(city: city) { result, response in
+                    guard result else {
+                        return
+                    }
+                    print(response.weather[0].main)
+                    DispatchQueue.main.async {
+                        self.weathersByCity.append(response)
+                        var currentSnapshot = self.dataSource.snapshot()
+                        currentSnapshot.appendItems([response], toSection: .all)
+                        self.dataSource.apply(currentSnapshot)
+                    }
                 }
             }
-        }
     }
-
+    
     func configureDataSource() -> UITableViewDiffableDataSource<Section, CurrentWeatherDataResponse> {
         let cellIdentifier = "weatherTableViewCell"
         let dataSource = UITableViewDiffableDataSource<Section, CurrentWeatherDataResponse>(

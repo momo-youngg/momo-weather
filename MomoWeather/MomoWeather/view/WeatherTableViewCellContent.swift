@@ -19,25 +19,29 @@ class WeatherTableViewCellContent: UIView {
         
     func setWeatherData(weatherData: CurrentWeatherDataResponse) {
         cityName.text = weatherData.name
-        weatherIcon.image = UIImage(systemName: "heart")
-        temperature.text = "\(String(weatherData.main.temp))\(WeatherTableViewCellContent.degree)"
+        weatherIcon.image = UIImage(systemName: weatherData.weather[0].sfSymbolName)
+        temperature.text = getTemperatureString(KelvinCelsiusTemperature: weatherData.main.temp)
         humidity.text = String(weatherData.main.humidity)
-
+    }
+    
+    private func getTemperatureString(KelvinCelsiusTemperature: Double) -> String {
+        return "\(String(format: "%.1f", KelvinCelsiusTemperature - 273.0))\(WeatherTableViewCellContent.degree)"
+    }
+    
+    func setUp() {
         GradientUtil.setGradientToView(
             gradientColor: GradientUtil.GradientColor.gradientColors.randomElement() ?? GradientUtil.GradientColor.orange,
             view: backgroundView
         )
-        
-        setTemp(label: cityName)
-        setTemp(label: temperature)
-        setTemp(label: humidity)
+        setLabelTextHeightToFit(label: cityName)
+        setLabelTextHeightToFit(label: temperature)
+        setLabelTextHeightToFit(label: humidity)
     }
     
-    private func setTemp(label: UILabel) {
-        label.minimumScaleFactor = 0.1    //or whatever suits your need
+    private func setLabelTextHeightToFit(label: UILabel) {
+        label.minimumScaleFactor = 0.1
         label.adjustsFontSizeToFitWidth = true
         label.lineBreakMode = .byClipping
         label.numberOfLines = 0
     }
-    
 }

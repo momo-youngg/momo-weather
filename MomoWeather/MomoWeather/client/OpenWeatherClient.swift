@@ -8,8 +8,8 @@
 import Foundation
 
 struct City {
-    let name: String
-    let description: String
+    let nameInKorean: String
+    let id: Int
 }
 
 class OpenWeatherClient {
@@ -17,11 +17,11 @@ class OpenWeatherClient {
     private let openWeatherBaseUrl = "https://api.openweathermap.org"
     private let apiKey: String = "68f9e68965e089052e717dac85da6b48"
     
-    func getCurrentWeatherData(cityName: String,
+    func getCurrentWeatherData(city: City,
                                completionHandler:
                                @escaping (Bool, CurrentWeatherDataResponse) -> Void) {
         get(uri: "/data/2.5/weather",
-            parameters: ["q": cityName],
+            parameters: ["id": String(city.id)],
             responseType: CurrentWeatherDataResponse.self,
             completionHandler: completionHandler)
     }
@@ -29,7 +29,26 @@ class OpenWeatherClient {
     func getCities() -> [City] {
         //TODO 할수 있다면 동적으로 받아오도록 수정
         return [
-            City(name: "Seoul", description: "서울")
+            City(nameInKorean: "공주", id: 1842616),
+            City(nameInKorean: "광주(전라남도)", id: 1841808),
+            City(nameInKorean: "구미", id: 1842225),
+            City(nameInKorean: "군산", id: 1842025),
+            City(nameInKorean: "대구", id: 1835327),
+            City(nameInKorean: "대전", id: 1835224),
+            City(nameInKorean: "목포", id: 1841066),
+            City(nameInKorean: "부산", id: 1838519),
+            City(nameInKorean: "서산", id: 1835895),
+            City(nameInKorean: "서울", id: 1835847),
+            City(nameInKorean: "속초", id: 1836553),
+            City(nameInKorean: "수원", id: 1835553),
+            City(nameInKorean: "순천", id: 1835648),
+            City(nameInKorean: "울산", id: 1833742),
+            City(nameInKorean: "익산", id: 1843491),
+            City(nameInKorean: "전주", id: 1845457),
+            City(nameInKorean: "제주시", id: 1846266),
+            City(nameInKorean: "천안", id: 1845759),
+            City(nameInKorean: "청주", id: 1845033),
+            City(nameInKorean: "춘천", id: 1845136),
         ]
     }
     
@@ -41,6 +60,7 @@ class OpenWeatherClient {
             URLQueryItem(name: key, value: parameters[key])
         }
         urlComponents.queryItems?.append(URLQueryItem(name: "appId", value: apiKey))
+        urlComponents.queryItems?.append(URLQueryItem(name: "lang", value: "kr"))
         return urlComponents.url
     }
     

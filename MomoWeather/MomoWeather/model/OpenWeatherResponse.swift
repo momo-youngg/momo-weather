@@ -20,7 +20,7 @@ struct CurrentWeatherDataResponse: Decodable, Hashable {
     
     
     enum CodingKeys: String, CodingKey {
-        case coord, weather, base, main, visibility, wind, clouds, dt, sys, timezone, id, name, cod
+        case coord, weather, base, main, visibility, wind, clouds, dt, timezone, id, name, cod
     }
     
     let coord: OpenWeatherCoord
@@ -31,7 +31,6 @@ struct CurrentWeatherDataResponse: Decodable, Hashable {
     let wind: OpenWeatherWind
     let clouds: OpenWeatherClouds
     let dt: Int
-    let sys: OpenWeatherSys
     let timezone: Int
     let id: Int
     let name: String
@@ -47,7 +46,7 @@ struct CurrentWeatherDataResponse: Decodable, Hashable {
         wind = try container.decode(OpenWeatherWind.self, forKey: .wind)
         clouds = try container.decode(OpenWeatherClouds.self, forKey: .clouds)
         dt = try container.decode(Int.self, forKey: .dt)
-        sys = try container.decode(OpenWeatherSys.self, forKey: .sys)
+//        sys = try container.decode(OpenWeatherSys.self, forKey: .sys)
         timezone = try container.decode(Int.self, forKey: .timezone)
         id = try container.decode(Int.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
@@ -82,6 +81,51 @@ struct OpenWeatherWeather: Decodable {
     let main: String
     let description: String
     let icon: String
+    var sfSymbolName: String {
+        get {
+            switch id {
+            case 200, 201, 202, 230, 231, 232:
+                return "cloud.bolt.rain.fill"
+            case (200...299):
+                return "cloud.bolt.fill"
+            case (300...399):
+                return "cloud.drizzle.fill"
+            case 511:
+                return "snowflake"
+            case (500...504):
+                return "cloud.sun.rain.fill"
+            case (500...599):
+                return "cloud.heavyrain.fill"
+            case (600...699):
+                return "snowflake"
+            case 711:
+                return "smoke.fill"
+            case 721:
+                return "sun.haze.fill"
+            case 731, 761:
+                return "sun.dust.fill"
+            case 741:
+                return "cloud.fog.fill"
+            case 771:
+                return "cloud.rain.fill"
+            case 781:
+                return "tornado"
+            case (700...799):
+                return "aqi.medium"
+            case 800:
+                return "sun.max.fill"
+            case 801:
+                return "cloud.sun.fill"
+            case 802:
+                return "cloud.fill"
+            case (800...899):
+                return "cloud.moon.fill"
+            default:
+                return "sun.max.fill"
+            }
+        }
+    }
+    
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
