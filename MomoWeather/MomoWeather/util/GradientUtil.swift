@@ -34,9 +34,12 @@ struct GradientUtil {
         
     static func setGradientToView(gradientColor: GradientColor, view: UIView) {
         let randDouble = Double.random(in: 0.0...1.0)
+        let randInt = Int.random(in: 0...1)
         
         let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [gradientColor.light, gradientColor.mid, gradientColor.dark]
+        gradientLayer.colors = [randInt == 1 ? gradientColor.light : gradientColor.dark,
+                                gradientColor.mid,
+                                randInt == 1 ? gradientColor.dark : gradientColor.light]
         gradientLayer.startPoint = CGPoint(x: randDouble, y: 0.0)
         gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0 - randDouble)
         

@@ -22,6 +22,7 @@
 		FA86CDCC27A48EE0007826D7 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDCB27A48EE0007826D7 /* WeatherTableViewCell.swift */; };
 		FA86CDDA27A5A228007826D7 /* WeatherMainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDD927A5A228007826D7 /* WeatherMainNavigationController.swift */; };
 		FA86CDDD27A5AA56007826D7 /* GradientUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDDC27A5AA56007826D7 /* GradientUtil.swift */; };
+		FA86CDE127A5CE39007826D7 /* WeatherTableViewCellContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDE027A5CE39007826D7 /* WeatherTableViewCellContent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		FA86CDCB27A48EE0007826D7 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		FA86CDD927A5A228007826D7 /* WeatherMainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMainNavigationController.swift; sourceTree = "<group>"; };
 		FA86CDDC27A5AA56007826D7 /* GradientUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientUtil.swift; sourceTree = "<group>"; };
+		FA86CDE027A5CE39007826D7 /* WeatherTableViewCellContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCellContent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				FA86CDCB27A48EE0007826D7 /* WeatherTableViewCell.swift */,
+				FA86CDE027A5CE39007826D7 /* WeatherTableViewCellContent.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				FA86CD8D27A3F27C007826D7 /* AppDelegate.swift in Sources */,
 				FA86CD8F27A3F27C007826D7 /* SceneDelegate.swift in Sources */,
 				FA86CDC927A48DC0007826D7 /* WeatherTableViewController.swift in Sources */,
+				FA86CDE127A5CE39007826D7 /* WeatherTableViewCellContent.swift in Sources */,
 				FA86CDBE27A3F389007826D7 /* OpenWeatherClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
