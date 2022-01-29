@@ -37,10 +37,12 @@ class WeatherTableViewController: UITableViewController {
                 guard result else {
                     return
                 }
-                self.weathersByCity.append(response)
-                var currentSnapshot = self.dataSource.snapshot()
-                currentSnapshot.appendItems([response], toSection: .all)
-                self.dataSource.apply(currentSnapshot)
+                DispatchQueue.main.async {
+                    self.weathersByCity.append(response)
+                    var currentSnapshot = self.dataSource.snapshot()
+                    currentSnapshot.appendItems([response], toSection: .all)
+                    self.dataSource.apply(currentSnapshot)
+                }
             }
         }
     }
