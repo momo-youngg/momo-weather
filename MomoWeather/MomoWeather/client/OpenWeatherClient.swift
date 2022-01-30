@@ -60,7 +60,7 @@ class OpenWeatherClient {
             URLQueryItem(name: key, value: parameters[key])
         }
         urlComponents.queryItems?.append(URLQueryItem(name: "appId", value: apiKey))
-        urlComponents.queryItems?.append(URLQueryItem(name: "lang", value: "kr"))
+//        urlComponents.queryItems?.append(URLQueryItem(name: "lang", value: "kr"))
         return urlComponents.url
     }
     

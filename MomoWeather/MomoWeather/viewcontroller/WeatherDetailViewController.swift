@@ -30,19 +30,17 @@ class WeatherDetailViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .never
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.tintColor = .white
+        print(Date())
     }
-
-
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
         print(weatherData!)
         // Do any additional setup after loading the view.
-        weatherDescription.text = weatherData.weather[0].description
+        weatherDescription.text = weatherData.weather[0].description.capitalized
         temperature.text = WeatherUtil.formatTemperature(KelvinCelsiusTemperature: weatherData.main.temp)
         weatherIcon.image = UIImage(systemName: weatherData.weather[0].sfSymbolName)
-        date.text = "2022년 1월 30일 일"
+        date.text = WeatherUtil.dateFormatter.string(from: Date())
         feelsLike.text = WeatherUtil.formatTemperature(KelvinCelsiusTemperature: weatherData.main.feelsLike)
         tempMax.text = WeatherUtil.formatTemperature(KelvinCelsiusTemperature: weatherData.main.tempMax)
         tempMin.text = WeatherUtil.formatTemperature(KelvinCelsiusTemperature: weatherData.main.tempMin)

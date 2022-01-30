@@ -10,9 +10,16 @@ import Foundation
 struct WeatherUtil {
     
     private static let degree: String = "°C"
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_EN")
+        formatter.timeZone = TimeZone(abbreviation: "KST")
+        formatter.dateFormat = "EEEE | dd MMM yyyy"
+        return formatter
+    }()
 
     static func formatTemperature(KelvinCelsiusTemperature: Double) -> String {
-        return "\(String(format: "%.1f", KelvinCelsiusTemperature - 273.0))\(WeatherUtil.degree)"
+        return "\(String(format: "%.0f", KelvinCelsiusTemperature - 273.0))\(WeatherUtil.degree)"
     }
     
     static func formatHumidity(humidity: Int) -> String {
@@ -24,7 +31,7 @@ struct WeatherUtil {
     }
     
     static func formatWindSpeed(windSpeed: Double) -> String {
-        return "\(String(format: "%.f", windSpeed))m/s"
+        return "\(String(format: "%.1f", windSpeed))m/s"
     }
 
 }
