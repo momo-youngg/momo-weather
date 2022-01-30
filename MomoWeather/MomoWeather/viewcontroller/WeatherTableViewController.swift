@@ -17,11 +17,17 @@ class WeatherTableViewController: UITableViewController {
     var weathersByCity: [CurrentWeatherDataResponse] = []
     lazy var dataSource: UITableViewDiffableDataSource<Section, CurrentWeatherDataResponse> = configureDataSource()
     
+    override func viewWillAppear(_ animated: Bool) {
+       super.viewWillAppear(animated)
+
+       navigationItem.title = "Weather"
+       navigationController?.navigationBar.prefersLargeTitles = true
+       navigationItem.largeTitleDisplayMode =  .always
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadInitialData()
-        
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
         self.tableView.separatorStyle = .none
@@ -36,7 +42,6 @@ class WeatherTableViewController: UITableViewController {
                     guard result else {
                         return
                     }
-                    print(response.weather[0].main)
                     DispatchQueue.main.async {
                         self.weathersByCity.append(response)
                         var currentSnapshot = self.dataSource.snapshot()
@@ -68,4 +73,14 @@ class WeatherTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "WetherDetailSegue" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let destinationController = segue.destination as! WeatherDetailViewController
+                destinationController.weatherData = self.weathersByCity[indexPath.row]
+                destinationController.hidesBottomBarWhenPushed = true
+            }
+        }
+    }
+
 }
