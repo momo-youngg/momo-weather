@@ -18,13 +18,14 @@ class WeatherTableViewController: UITableViewController {
     lazy var dataSource: UITableViewDiffableDataSource<Section, CurrentWeatherDataResponse> = configureDataSource()
     
     override func viewWillAppear(_ animated: Bool) {
-       super.viewWillAppear(animated)
-
-       navigationItem.title = "Weather"
-       navigationController?.navigationBar.prefersLargeTitles = true
-       navigationItem.largeTitleDisplayMode =  .always
-    }
+        super.viewWillAppear(animated)
         
+        navigationItem.title = "Weather"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadInitialData()
@@ -82,5 +83,5 @@ class WeatherTableViewController: UITableViewController {
             }
         }
     }
-
+    
 }

@@ -19,6 +19,7 @@ class WeatherDetailViewController: UIViewController {
     @IBOutlet var humidity: UILabel!
     @IBOutlet var pressure: UILabel!
     @IBOutlet var windSpeed: UILabel!
+    @IBOutlet var backgroundView: UIView!
     
     var weatherData: CurrentWeatherDataResponse!
     
@@ -27,7 +28,12 @@ class WeatherDetailViewController: UIViewController {
         
         navigationItem.title = weatherData.name
         navigationItem.largeTitleDisplayMode = .never
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.tintColor = .white
     }
+
+
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +59,8 @@ class WeatherDetailViewController: UIViewController {
         humidity.setTextHeightToMaxFit()
         pressure.setTextHeightToMaxFit()
         windSpeed.setTextHeightToMaxFit()
+        
+        GradientUtil.setGradientToView(gradientColor: weatherData.weather[0].gradientColor, view: backgroundView)
     }
 
     /*

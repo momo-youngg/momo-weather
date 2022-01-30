@@ -125,7 +125,27 @@ struct OpenWeatherWeather: Decodable {
             }
         }
     }
-    
+    var gradientColor: GradientUtil.GradientColor {
+        get {
+            let currentTime = Calendar.current.component(.hour, from: Date())
+            switch id {
+            case (200...599):
+                return .green
+            case (600...699):
+                return .green
+            case (700...799):
+                return .plum
+            case 800 where currentTime >= 6 && currentTime <= 18:
+                return .orange
+            case 800:
+                return .purple
+            case (801...899):
+                return .blue
+            default:
+                return .orange
+            }
+        }
+    }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)

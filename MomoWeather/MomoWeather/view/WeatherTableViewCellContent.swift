@@ -20,13 +20,13 @@ class WeatherTableViewCellContent: UIView {
         weatherIcon.image = UIImage(systemName: weatherData.weather[0].sfSymbolName)
         temperature.text = WeatherUtil.formatTemperature(KelvinCelsiusTemperature: weatherData.main.temp)
         humidity.text = WeatherUtil.formatHumidity(humidity: weatherData.main.humidity)
+        GradientUtil.setGradientToView(
+            gradientColor: weatherData.weather[0].gradientColor,
+            view: backgroundView
+        )
     }
         
     func setUp() {
-        GradientUtil.setGradientToView(
-            gradientColor: GradientUtil.GradientColor.gradientColors.randomElement() ?? GradientUtil.GradientColor.orange,
-            view: backgroundView
-        )
         cityName.setTextHeightToMaxFit()
         temperature.setTextHeightToMaxFit()
         humidity.setTextHeightToMaxFit()
