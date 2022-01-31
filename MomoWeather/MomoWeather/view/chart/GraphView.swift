@@ -86,7 +86,6 @@ class GraphView: UIView {
         scrollView.layer.addSublayer(mainLayer)
         self.layer.addSublayer(gridLayer)
         self.addSubview(scrollView)
-        
         self.backgroundColor = .clear
     }
     
@@ -240,7 +239,7 @@ class GraphView: UIView {
     
     private func clean() {
         mainLayer.sublayers?.forEach({
-            if $0 is CATextLayer {
+            if $0 is CATextLayer || $0 is DotCALayer {
                 $0.removeFromSuperlayer()
             }
         })
