@@ -32,7 +32,7 @@ class WeatherGraphViewController: UIViewController {
                                                                                  innerColor: UIColor.black,
                                                                                  innerRadius: 8.0,
                                                                                  outerRadius: 12.0,
-                                                                                 values: [20.0, 18.0, 16.0, 14.0, 11.0, 1.0, -1.0, -3.0, 0.0, 11.0]),
+                                                                                 values: [20.0, 18.0, 16.0, 14.0, 11.0, 1.0, -1.0, -3.0, 0.0, 15.0]),
                                                        ])
         graphView.graphInfo = graphInfo
     }
