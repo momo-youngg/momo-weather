@@ -210,10 +210,13 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIY-O9-RSL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="368" height="74.333333333333329"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="368" height="74"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="How it would be like in the future?"/>
+                                                    <connections>
+                                                        <segue destination="QAu-72-cKH" kind="show" id="5DM-XV-XUg"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -413,6 +416,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EWR-Og-z7l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="986.91588785046724" y="-84.233261339092877"/>
+        </scene>
+        <!--Weather Graph View Controller-->
+        <scene sceneID="oh8-eE-Zsh">
+            <objects>
+                <viewController id="QAu-72-cKH" customClass="WeatherGraphViewController" customModule="MomoWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p7I-yr-dUz">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="070-Dk-oAz" customClass="ChartView" customModule="MomoWeather" customModuleProvider="target">
+                                <rect key="frame" x="10" y="188" width="408" height="604"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="c8G-HW-XOm"/>
+                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                        <constraints>
+                            <constraint firstItem="070-Dk-oAz" firstAttribute="leading" secondItem="c8G-HW-XOm" secondAttribute="leading" constant="10" id="HIJ-ug-rsY"/>
+                            <constraint firstItem="c8G-HW-XOm" firstAttribute="trailing" secondItem="070-Dk-oAz" secondAttribute="trailing" constant="10" id="O0V-dM-ycF"/>
+                            <constraint firstItem="c8G-HW-XOm" firstAttribute="bottom" secondItem="070-Dk-oAz" secondAttribute="bottom" constant="100" id="c2P-bD-6Eg"/>
+                            <constraint firstItem="070-Dk-oAz" firstAttribute="top" secondItem="c8G-HW-XOm" secondAttribute="top" constant="100" id="ibK-Mx-k4X"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="rQX-Eu-SaK"/>
+                    <connections>
+                        <outlet property="graphView" destination="070-Dk-oAz" id="bTH-2j-VXt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Eq-gZ-qUl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1914" y="-84"/>
         </scene>
     </scenes>
     <resources>
