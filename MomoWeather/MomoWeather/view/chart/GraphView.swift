@@ -95,6 +95,7 @@ class GraphView: UIView {
         guard let graphInfo = graphInfo else {
             return
         }
+        let allValues = graphInfo.graphValueInfo.flatMap{ valueInfo in valueInfo.values }
         scrollView.frame = CGRect(x: 0,
                                   y: 0,
                                   width: self.frame.size.width,
@@ -116,9 +117,10 @@ class GraphView: UIView {
                                  width: self.frame.width,
                                  height: mainLayer.frame.height - 2 * graphInfo.space)
         clean()
-        
+        drawLabels()
+        drawHorizontalLines(allValues: allValues)
+
         // every
-        let allValues = graphInfo.graphValueInfo.flatMap{ valueInfo in valueInfo.values }
         graphInfo.graphValueInfo.forEach { valueInfo in
             let points = convertValueToPoint(allValues: allValues, targetValues: valueInfo.values)
             drawDots(points: points,
@@ -126,9 +128,7 @@ class GraphView: UIView {
                      outerColor: valueInfo.outerColor,
                      innerRadius: valueInfo.innerRadius,
                      outerRadius: valueInfo.outerRadius)
-            drawHorizontalLines(allValues: allValues)
             drawChart(points: points, color: valueInfo.outerColor.cgColor)
-            drawLabels()
         }
     }
     
