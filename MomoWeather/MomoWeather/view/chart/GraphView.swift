@@ -38,7 +38,7 @@ struct GraphInfo {
 }
 
 
-class ChartView: UIView {
+class GraphView: UIView {
     
     /*
      // Only override draw() if you perform custom drawing.
@@ -86,6 +86,8 @@ class ChartView: UIView {
         scrollView.layer.addSublayer(mainLayer)
         self.layer.addSublayer(gridLayer)
         self.addSubview(scrollView)
+        
+        self.backgroundColor = .clear
     }
     
     //main
@@ -116,27 +118,28 @@ class ChartView: UIView {
         clean()
         
         // every
+        let allValues = graphInfo.graphValueInfo.flatMap{ valueInfo in valueInfo.values }
         graphInfo.graphValueInfo.forEach { valueInfo in
-            let points = convertValueToPoint(values: valueInfo.values)
+            let points = convertValueToPoint(allValues: allValues, targetValues: valueInfo.values)
             drawDots(points: points,
                      innerColor: valueInfo.innerColor,
                      outerColor: valueInfo.outerColor,
                      innerRadius: valueInfo.innerRadius,
                      outerRadius: valueInfo.outerRadius)
-            drawHorizontalLines(allValues: graphInfo.graphValueInfo.flatMap{ valueInfo in valueInfo.values })
+            drawHorizontalLines(allValues: allValues)
             drawChart(points: points, color: valueInfo.outerColor.cgColor)
             drawLabels()
         }
     }
     
-    private func convertValueToPoint(values: [Double]) -> [CGPoint] {
+    private func convertValueToPoint(allValues: [Double], targetValues: [Double]) -> [CGPoint] {
         guard let graphInfo = graphInfo else {
             return []
         }
-        if let max = values.max(), let min = values.min() {
+        if let max = allValues.max(), let min = allValues.min() {
             let minMaxRange: CGFloat = CGFloat(max - min) * graphInfo.topHorizontalLine
-            return values.indices.map { index in
-                let height = dataLayer.frame.height * (1 - ((CGFloat(values[index]) - CGFloat(min)) / minMaxRange))
+            return targetValues.indices.map { index in
+                let height = dataLayer.frame.height * (1 - ((CGFloat(targetValues[index]) - CGFloat(min)) / minMaxRange))
                 return CGPoint(x: CGFloat(index) * graphInfo.lineGap + graphInfo.space, y: height)
             }
         }
@@ -254,7 +257,7 @@ class ChartView: UIView {
                 let xValue = point.x - outerRadius/2
                 let yValue = (point.y + graphInfo.lineGap) - (outerRadius * 2)
                 let dotLayer = DotCALayer(innerRadius: innerRadius, dotInnerColor: innerColor)
-                dotLayer.backgroundColor = UIColor.white.cgColor
+                dotLayer.backgroundColor = outerColor.cgColor
                 dotLayer.cornerRadius = outerRadius / 2
                 dotLayer.frame = CGRect(x: xValue, y: yValue, width: outerRadius, height: outerRadius)
                 dotLayers.append(dotLayer)

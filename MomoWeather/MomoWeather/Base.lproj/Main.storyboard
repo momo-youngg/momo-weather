@@ -206,7 +206,7 @@
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Miq-Lx-ZUg" userLabel="Future Button View">
                                         <rect key="frame" x="0.0" y="257.66666666666669" width="368" height="74.333333333333314"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6BD-0P-fl4">
-                                            <rect key="frame" x="0.0" y="0.0" width="368" height="74.333333333333314"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="368" height="74"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIY-O9-RSL">
@@ -425,7 +425,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="070-Dk-oAz" customClass="ChartView" customModule="MomoWeather" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="070-Dk-oAz" customClass="GraphView" customModule="MomoWeather" customModuleProvider="target">
                                 <rect key="frame" x="10" y="188" width="408" height="604"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
