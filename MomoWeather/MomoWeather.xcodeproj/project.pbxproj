@@ -100,14 +100,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FA6E28A727A861D3004ADA31 /* chart */ = {
-			isa = PBXGroup;
-			children = (
-				FA6E28A827A861EA004ADA31 /* GraphView.swift */,
-			);
-			path = chart;
-			sourceTree = "<group>";
-		};
 		FA86CD8027A3F27C007826D7 = {
 			isa = PBXGroup;
 			children = (
@@ -203,7 +195,7 @@
 		FA86CDCA27A48EC9007826D7 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				FA6E28A727A861D3004ADA31 /* chart */,
+				FA6E28A827A861EA004ADA31 /* GraphView.swift */,
 				FA86CDCB27A48EE0007826D7 /* WeatherTableViewCell.swift */,
 				FA86CDE027A5CE39007826D7 /* WeatherTableViewCellContent.swift */,
 			);
