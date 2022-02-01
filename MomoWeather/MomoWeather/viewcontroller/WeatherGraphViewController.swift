@@ -24,26 +24,21 @@ class WeatherGraphViewController: UIViewController {
         openWhetherClient.get5Day3HourForecastData(lat: weatherData.coord.lat,
                                                    lon: weatherData.coord.lon) { result, forecast in
             let graphInfo: GraphInfo = GraphInfo(graphKeyInfo: forecast.graphKeyInfo,
+                                                 graphKeyVerticalLinePredicate: { $0.contains(" ") },
                                                  leftGraphValueInfo: [GraphInfo.GraphValueInfo(description: "최저기온",
                                                                                                dimension: "도씨",
                                                                                                outerColor: .blue,
                                                                                                innerColor: .white,
-                                                                                               innerRadius: 8.0,
-                                                                                               outerRadius: 12.0,
                                                                                                values: forecast.graphMinTempValueInfo),
                                                                       GraphInfo.GraphValueInfo(description: "최고기온",
                                                                                                dimension: "도씨",
                                                                                                outerColor: .red,
                                                                                                innerColor: .white,
-                                                                                               innerRadius: 8.0,
-                                                                                               outerRadius: 12.0,
                                                                                                values: forecast.graphMaxTempValueInfo)],
                                                  rightGraphValueInffo: [GraphInfo.GraphValueInfo(description: "습도",
                                                                                                  dimension: "%",
                                                                                                  outerColor: .black,
                                                                                                  innerColor: .white,
-                                                                                                 innerRadius: 8.0,
-                                                                                                 outerRadius: 12.0,
                                                                                                  values: forecast.graphHumidityTempValueInfo)])
             
             DispatchQueue.main.async {

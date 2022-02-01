@@ -14,27 +14,21 @@ struct GraphInfo {
         let dimension: String
         let outerColor: UIColor
         let innerColor: UIColor
-        var innerRadius: Double // = 8
-        var outerRadius: Double // = 12
         let values: [Double]
+        var innerRadius: Double = 8.0
+        var outerRadius: Double = 12.0
     }
     
     let graphKeyInfo: [String]
+    let graphKeyVerticalLinePredicate: (String) -> Bool
     let leftGraphValueInfo: [GraphValueInfo]
     let rightGraphValueInffo: [GraphValueInfo]
     
-    /// The top most horizontal line in the chart will be 10% higher than the highest value in the chart
     let topHorizontalLine: CGFloat = 110.0 / 100.0
-    
-    /// gap between each point
     let lineGap: CGFloat = 60.0
-    
     let space: CGFloat = 40.0
-    
     let fontSize: CGFloat = 11.0
-    
     let lineAndLabelColor: UIColor = UIColor.white
-    
     let lineWidth: Double = 0.5
 }
 
@@ -193,6 +187,21 @@ class GraphView: UIView {
                 textLayer.fontSize = graphInfo.fontSize
                 textLayer.string = keys[index]
                 mainLayer.addSublayer(textLayer)
+                
+                if (graphInfo.graphKeyVerticalLinePredicate(keys[index])) {
+                    let path = UIBezierPath()
+                    path.move(to: CGPoint(x: graphInfo.lineGap * CGFloat(index) + graphInfo.space,
+                                          y: mainLayer.frame.size.height - graphInfo.space))
+                    path.addLine(to: CGPoint(x: graphInfo.lineGap * CGFloat(index) + graphInfo.space,
+                                             y: graphInfo.space))
+                    let lineLayer = CAShapeLayer()
+                    lineLayer.path = path.cgPath
+                    lineLayer.fillColor = UIColor.clear.cgColor
+                    lineLayer.strokeColor = graphInfo.lineAndLabelColor.cgColor
+                    lineLayer.lineWidth = graphInfo.lineWidth
+                    lineLayer.lineDashPattern = [4, 4]
+                    mainLayer.addSublayer(lineLayer)
+                }
             }
         }
     }
