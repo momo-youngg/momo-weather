@@ -77,7 +77,6 @@ class OpenWeatherClient {
                                    responseType: T.Type,
                                    completionHandler: @escaping (Bool, T) -> Void) {
         guard let url = generateUrl(uri: uri, parameters: parameters) else {
-            //TODO handling error
             return
         }
         
@@ -86,29 +85,18 @@ class OpenWeatherClient {
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard error == nil else {
-                //TODO handling error
-                print("error with http reqeust")
-                print(error!)
                 return
             }
             guard let response = response as? HTTPURLResponse, 200 == response.statusCode else {
-                //TODO handling error
-                print("error http status is not 200.")
                 return
             }
             guard let data = data else {
-                //TODO handling error
-                print("error data is nil")
                 return
             }
-            
             do {
                 let output = try JSONDecoder().decode(responseType, from: data)
                 completionHandler(true, output)
             } catch {
-                //TODO handling error
-                print("error parsing data")
-                print(error)
                 return
             }
         }.resume()
