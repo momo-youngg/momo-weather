@@ -121,7 +121,12 @@
                             <outlet property="delegate" destination="m3C-lY-vzV" id="RdY-9v-emv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Weather" id="6sY-3G-py4"/>
+                    <navigationItem key="navigationItem" title="Weather" id="6sY-3G-py4">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.up.arrow.down" catalog="system" id="N14-fY-ps6"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="button" destination="N14-fY-ps6" id="fgu-Qs-vdb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I0m-6Q-e78" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -511,6 +516,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.up.arrow.down" catalog="system" width="128" height="98"/>
         <image name="humidity.fill" catalog="system" width="128" height="98"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="rectangle.compress.vertical" catalog="system" width="122" height="128"/>
