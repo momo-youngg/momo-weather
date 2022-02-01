@@ -39,7 +39,7 @@ class WeatherDetailViewController: UIViewController {
         weatherDescription.text = weatherData.weather[0].description.capitalized
         temperature.text = WeatherUtil.formatTemperature(KelvinCelsiusTemperature: weatherData.main.temp)
         weatherIcon.image = UIImage(systemName: weatherData.weather[0].sfSymbolName)
-        date.text = WeatherUtil.dateFormatter.string(from: Date())
+        date.text = WeatherUtil.dateFormatter(dateFormat: "EEEE | dd MMM yyyy").string(from: Date())
         feelsLike.text = WeatherUtil.formatTemperature(KelvinCelsiusTemperature: weatherData.main.feelsLike)
         tempMax.text = WeatherUtil.formatTemperature(KelvinCelsiusTemperature: weatherData.main.tempMax)
         tempMin.text = WeatherUtil.formatTemperature(KelvinCelsiusTemperature: weatherData.main.tempMin)

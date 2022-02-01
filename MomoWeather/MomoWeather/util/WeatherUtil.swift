@@ -10,13 +10,13 @@ import Foundation
 struct WeatherUtil {
     
     private static let degree: String = "°C"
-    static let dateFormatter: DateFormatter = {
+    static func dateFormatter(dateFormat: String) -> DateFormatter {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_EN")
         formatter.timeZone = TimeZone(abbreviation: "KST")
-        formatter.dateFormat = "EEEE | dd MMM yyyy"
+        formatter.dateFormat = dateFormat
         return formatter
-    }()
+    }
 
     static func formatTemperature(KelvinCelsiusTemperature: Double) -> String {
         return "\(String(format: "%.0f", KelvinCelsiusTemperature - 273.0))\(WeatherUtil.degree)"

@@ -256,6 +256,41 @@ struct ForecastWeatherDataResponse: Decodable {
         list = try container.decode([OpenWeatherForecast].self, forKey: .list)
         city = try container.decode(OpenWeatherCity.self, forKey: .city)
     }
+    
+    var graphKeyInfo: [String] {
+        get{
+            list.indices.map{ index in
+                let date = Date(timeIntervalSince1970: Double(list[index].dt))
+                let dateFormat: String = {
+                    if (index == 0 || Calendar.current.component(Calendar.Component.hour, from: date) == 0) {
+                        return "M/D HH:mm"
+                    } else {
+                        return "HH:mm"
+                    }
+                }()
+                return WeatherUtil.dateFormatter(dateFormat: dateFormat).string(from: date)
+            }
+        }
+    }
+    
+    var graphMinTempValueInfo: [Double] {
+        get {
+            list.map{ $0.main.tempMin }
+        }
+    }
+    
+    var graphMaxTempValueInfo: [Double] {
+        get{
+            list.map{ $0.main.tempMax }
+        }
+    }
+    
+    var graphHumidityTempValueInfo: [Double] {
+        get {
+            list.map{ Double($0.main.humidity) }
+        }
+    }
+    
 }
 
 struct OpenWeatherForecast: Decodable {
