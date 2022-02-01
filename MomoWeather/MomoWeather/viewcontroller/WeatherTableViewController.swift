@@ -35,13 +35,10 @@ class WeatherTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadInitialData()
-        // Uncomment the following line to preserve selection between presentations
-        self.clearsSelectionOnViewWillAppear = false
         self.tableView.separatorStyle = .none
         tableView.dataSource = dataSource
     }
     
-    // TODO 알잘딱깔센
     func loadInitialData() {
         openWhetherClient.getCities()
             .forEach { city in
