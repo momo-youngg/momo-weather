@@ -20,7 +20,8 @@ struct GraphInfo {
     }
     
     let graphKeyInfo: [String]
-    let graphValueInfo: [GraphValueInfo]
+    let leftGraphValueInfo: [GraphValueInfo]
+    let rightGraphValueInffo: [GraphValueInfo]
     
     /// The top most horizontal line in the chart will be 10% higher than the highest value in the chart
     let topHorizontalLine: CGFloat = 110.0 / 100.0
@@ -94,12 +95,13 @@ class GraphView: UIView {
         guard let graphInfo = graphInfo else {
             return
         }
-        let allValues = graphInfo.graphValueInfo.flatMap{ valueInfo in valueInfo.values }
+        let leftAllValues = graphInfo.leftGraphValueInfo.flatMap{ $0.values }
+        let rightAllValues = graphInfo.rightGraphValueInffo.flatMap{ $0.values }
+
         scrollView.frame = CGRect(x: 0,
                                   y: 0,
                                   width: self.frame.size.width,
                                   height: self.frame.size.height)
-        // once
         scrollView.contentSize = CGSize(width: CGFloat(graphInfo.graphKeyInfo.count) * graphInfo.lineGap,
                                         height: self.frame.size.height)
         mainLayer.frame = CGRect(x: 0,
@@ -117,17 +119,24 @@ class GraphView: UIView {
                                  height: mainLayer.frame.height - 2 * graphInfo.space)
         clean()
         drawLabels()
-        drawHorizontalLines(allValues: allValues)
+        drawHorizontalLines(leftAllValues: leftAllValues, rightAllValues: rightAllValues)
 
-        // every
-        graphInfo.graphValueInfo.forEach { valueInfo in
-            let points = convertValueToPoint(allValues: allValues, targetValues: valueInfo.values)
+        graphInfo.leftGraphValueInfo.forEach { valueInfo in
+            let points = convertValueToPoint(allValues: leftAllValues, targetValues: valueInfo.values)
             drawDots(points: points,
                      innerColor: valueInfo.innerColor,
                      outerColor: valueInfo.outerColor,
                      innerRadius: valueInfo.innerRadius,
                      outerRadius: valueInfo.outerRadius)
             drawChart(points: points, color: valueInfo.outerColor.cgColor)
+        }
+        graphInfo.rightGraphValueInffo.forEach { valueInfo in
+            let points = convertValueToPoint(allValues: rightAllValues, targetValues: valueInfo.values)
+            drawDots(points: points,
+                     innerColor: valueInfo.innerColor,
+                     outerColor: valueInfo.outerColor,
+                     innerRadius: valueInfo.innerRadius,
+                     outerRadius: valueInfo.outerRadius)
         }
     }
     
@@ -188,12 +197,12 @@ class GraphView: UIView {
         }
     }
     
-    private func drawHorizontalLines(allValues: [Double]) {
+    private func drawHorizontalLines(leftAllValues: [Double], rightAllValues: [Double]) {
         guard let graphInfo = graphInfo else {
             return
         }
         let gridValues: [CGFloat] = {
-            if allValues.count < 4 && allValues.count > 0 {
+            if leftAllValues.count < 4 && leftAllValues.count > 0 {
                 return [0, 1]
             } else {
                 return [0, 0.25, 0.5, 0.75, 1]
@@ -217,23 +226,29 @@ class GraphView: UIView {
             }
             gridLayer.addSublayer(lineLayer)
             
-            var minMaxGap:CGFloat = 0
-            var lineValue:Int = 0
-            if let max = allValues.max(), let min = allValues.min() {
-                minMaxGap = CGFloat(max - min) * graphInfo.topHorizontalLine
-                lineValue = Int((1-value) * minMaxGap) + Int(min)
+            func addTextLayer(allValue: [Double], x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, textAlignMode: CATextLayerAlignmentMode) {
+                var minMaxGap:CGFloat = 0
+                var lineValue:Int = 0
+                if let max = allValue.max(), let min = allValue.min() {
+                    minMaxGap = CGFloat(max - min) * graphInfo.topHorizontalLine
+                    lineValue = Int((1-value) * minMaxGap) + Int(min)
+                }
+                
+                let textLayer = CATextLayer()
+                textLayer.frame = CGRect(x: x, y: y, width: width, height: height)
+                textLayer.foregroundColor = graphInfo.lineAndLabelColor.cgColor
+                textLayer.backgroundColor = UIColor.clear.cgColor
+                textLayer.contentsScale = UIScreen.main.scale
+                textLayer.font = CTFontCreateWithName(UIFont.systemFont(ofSize: 0).fontName as CFString, 0, nil)
+                textLayer.fontSize = graphInfo.fontSize
+                textLayer.string = "\(lineValue)"
+                textLayer.alignmentMode = textAlignMode
+        
+                gridLayer.addSublayer(textLayer)
             }
             
-            let textLayer = CATextLayer()
-            textLayer.frame = CGRect(x: 4, y: height, width: 50, height: 16)
-            textLayer.foregroundColor = graphInfo.lineAndLabelColor.cgColor
-            textLayer.backgroundColor = UIColor.clear.cgColor
-            textLayer.contentsScale = UIScreen.main.scale
-            textLayer.font = CTFontCreateWithName(UIFont.systemFont(ofSize: 0).fontName as CFString, 0, nil)
-            textLayer.fontSize = graphInfo.fontSize
-            textLayer.string = "\(lineValue)"
-            
-            gridLayer.addSublayer(textLayer)
+            addTextLayer(allValue: leftAllValues, x: 4, y: height, width: 50, height: 16, textAlignMode: .left)
+            addTextLayer(allValue: rightAllValues, x: 0, y: height, width: gridLayer.frame.width-4, height: 16, textAlignMode: .right)
         }
     }
     
