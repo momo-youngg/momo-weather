@@ -432,7 +432,9 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forecast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctR-Sq-K03">
                                 <rect key="frame" x="30" y="118" width="368" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="72t-ms-AG2"/>
+                                    <constraint firstAttribute="height" constant="50" id="72t-ms-AG2">
+                                        <variation key="heightClass=compact" constant="30"/>
+                                    </constraint>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="100"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -469,15 +471,29 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="uAt-kh-cn3" secondAttribute="trailing" id="42m-Ee-Lpu"/>
                             <constraint firstItem="uAt-kh-cn3" firstAttribute="top" secondItem="p7I-yr-dUz" secondAttribute="top" id="65r-ij-GAY"/>
-                            <constraint firstItem="c8G-HW-XOm" firstAttribute="bottom" secondItem="0bF-Ci-lc2" secondAttribute="bottom" constant="30" id="6t9-y5-oes"/>
-                            <constraint firstItem="ctR-Sq-K03" firstAttribute="leading" secondItem="c8G-HW-XOm" secondAttribute="leading" constant="30" id="8LC-45-ipO"/>
-                            <constraint firstItem="ctR-Sq-K03" firstAttribute="top" secondItem="c8G-HW-XOm" secondAttribute="top" constant="30" id="E2P-nU-C0T"/>
+                            <constraint firstItem="c8G-HW-XOm" firstAttribute="bottom" secondItem="0bF-Ci-lc2" secondAttribute="bottom" constant="30" id="6t9-y5-oes">
+                                <variation key="heightClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="ctR-Sq-K03" firstAttribute="leading" secondItem="c8G-HW-XOm" secondAttribute="leading" constant="30" id="8LC-45-ipO">
+                                <variation key="heightClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="ctR-Sq-K03" firstAttribute="top" secondItem="c8G-HW-XOm" secondAttribute="top" constant="30" id="E2P-nU-C0T">
+                                <variation key="heightClass=compact" constant="10"/>
+                            </constraint>
                             <constraint firstAttribute="bottom" secondItem="uAt-kh-cn3" secondAttribute="bottom" id="H5B-Ls-MOB"/>
-                            <constraint firstItem="c8G-HW-XOm" firstAttribute="trailing" secondItem="0bF-Ci-lc2" secondAttribute="trailing" constant="30" id="WNL-8H-wzh"/>
+                            <constraint firstItem="c8G-HW-XOm" firstAttribute="trailing" secondItem="0bF-Ci-lc2" secondAttribute="trailing" constant="30" id="WNL-8H-wzh">
+                                <variation key="heightClass=compact" constant="10"/>
+                            </constraint>
                             <constraint firstItem="uAt-kh-cn3" firstAttribute="leading" secondItem="p7I-yr-dUz" secondAttribute="leading" id="ba6-db-qtK"/>
-                            <constraint firstItem="0bF-Ci-lc2" firstAttribute="top" secondItem="ctR-Sq-K03" secondAttribute="bottom" constant="30" id="i8i-ki-RQ0"/>
-                            <constraint firstItem="c8G-HW-XOm" firstAttribute="trailing" secondItem="ctR-Sq-K03" secondAttribute="trailing" constant="30" id="lww-Xl-FGu"/>
-                            <constraint firstItem="0bF-Ci-lc2" firstAttribute="leading" secondItem="c8G-HW-XOm" secondAttribute="leading" constant="30" id="rjn-4o-S5W"/>
+                            <constraint firstItem="0bF-Ci-lc2" firstAttribute="top" secondItem="ctR-Sq-K03" secondAttribute="bottom" constant="30" id="i8i-ki-RQ0">
+                                <variation key="heightClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="c8G-HW-XOm" firstAttribute="trailing" secondItem="ctR-Sq-K03" secondAttribute="trailing" constant="30" id="lww-Xl-FGu">
+                                <variation key="heightClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="0bF-Ci-lc2" firstAttribute="leading" secondItem="c8G-HW-XOm" secondAttribute="leading" constant="30" id="rjn-4o-S5W">
+                                <variation key="heightClass=compact" constant="10"/>
+                            </constraint>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rQX-Eu-SaK"/>
