@@ -22,7 +22,7 @@ struct GraphInfo {
     let graphKeyInfo: [String]
     let graphKeyVerticalLinePredicate: (String) -> Bool
     let leftGraphValueInfo: [GraphValueInfo]
-    let rightGraphValueInffo: [GraphValueInfo]
+    let rightGraphValueInfo: [GraphValueInfo]
     
     let topHorizontalLine: CGFloat = 110.0 / 100.0
     let lineGap: CGFloat = 60.0
@@ -90,7 +90,7 @@ class GraphView: UIView {
             return
         }
         let leftAllValues = graphInfo.leftGraphValueInfo.flatMap{ $0.values }
-        let rightAllValues = graphInfo.rightGraphValueInffo.flatMap{ $0.values }
+        let rightAllValues = graphInfo.rightGraphValueInfo.flatMap{ $0.values }
 
         scrollView.frame = CGRect(x: 0,
                                   y: 0,
@@ -113,7 +113,7 @@ class GraphView: UIView {
                                  height: mainLayer.frame.height - 2 * graphInfo.space)
         clean()
         drawLabels()
-        drawHorizontalLines(leftAllValues: leftAllValues, rightAllValues: rightAllValues)
+        drawHorizontalLines(leftAllValues: leftAllValues, leftDimension: graphInfo.leftGraphValueInfo[0].dimension, rightAllValues: rightAllValues, rightDimension: graphInfo.rightGraphValueInfo[0].dimension)
 
         graphInfo.leftGraphValueInfo.forEach { valueInfo in
             let points = convertValueToPoint(allValues: leftAllValues, targetValues: valueInfo.values)
@@ -124,7 +124,7 @@ class GraphView: UIView {
                      outerRadius: valueInfo.outerRadius)
             drawChart(points: points, color: valueInfo.outerColor.cgColor)
         }
-        graphInfo.rightGraphValueInffo.forEach { valueInfo in
+        graphInfo.rightGraphValueInfo.forEach { valueInfo in
             let points = convertValueToPoint(allValues: rightAllValues, targetValues: valueInfo.values)
             drawDots(points: points,
                      innerColor: valueInfo.innerColor,
@@ -199,14 +199,13 @@ class GraphView: UIView {
                     lineLayer.fillColor = UIColor.clear.cgColor
                     lineLayer.strokeColor = graphInfo.lineAndLabelColor.cgColor
                     lineLayer.lineWidth = graphInfo.lineWidth
-                    lineLayer.lineDashPattern = [4, 4]
                     mainLayer.addSublayer(lineLayer)
                 }
             }
         }
     }
     
-    private func drawHorizontalLines(leftAllValues: [Double], rightAllValues: [Double]) {
+    private func drawHorizontalLines(leftAllValues: [Double], leftDimension: String, rightAllValues: [Double], rightDimension: String) {
         guard let graphInfo = graphInfo else {
             return
         }
@@ -235,7 +234,7 @@ class GraphView: UIView {
             }
             gridLayer.addSublayer(lineLayer)
             
-            func addTextLayer(allValue: [Double], x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, textAlignMode: CATextLayerAlignmentMode) {
+            func addTextLayer(allValue: [Double], x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, textAlignMode: CATextLayerAlignmentMode, dimension: String) {
                 var minMaxGap:CGFloat = 0
                 var lineValue:Int = 0
                 if let max = allValue.max(), let min = allValue.min() {
@@ -250,14 +249,14 @@ class GraphView: UIView {
                 textLayer.contentsScale = UIScreen.main.scale
                 textLayer.font = CTFontCreateWithName(UIFont.systemFont(ofSize: 0).fontName as CFString, 0, nil)
                 textLayer.fontSize = graphInfo.fontSize
-                textLayer.string = "\(lineValue)"
+                textLayer.string = "\(lineValue)\(dimension)"
                 textLayer.alignmentMode = textAlignMode
         
                 gridLayer.addSublayer(textLayer)
             }
             
-            addTextLayer(allValue: leftAllValues, x: 4, y: height, width: 50, height: 16, textAlignMode: .left)
-            addTextLayer(allValue: rightAllValues, x: 0, y: height, width: gridLayer.frame.width-4, height: 16, textAlignMode: .right)
+            addTextLayer(allValue: leftAllValues, x: 4, y: height, width: 50, height: 16, textAlignMode: .left, dimension: leftDimension)
+            addTextLayer(allValue: rightAllValues, x: 0, y: height, width: gridLayer.frame.width-4, height: 16, textAlignMode: .right, dimension: rightDimension)
         }
     }
     
