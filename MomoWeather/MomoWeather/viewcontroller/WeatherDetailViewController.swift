@@ -37,12 +37,12 @@ class WeatherDetailViewController: UIViewController {
         print(weatherData!)
         // Do any additional setup after loading the view.
         weatherDescription.text = weatherData.weather[0].description.capitalized
-        temperature.text = WeatherUtil.formatTemperature(KelvinCelsiusTemperature: weatherData.main.temp)
+        temperature.text = WeatherUtil.formatTemperature(kelvinCelsiusTemperature: weatherData.main.temp)
         weatherIcon.image = UIImage(systemName: weatherData.weather[0].sfSymbolName)
         date.text = WeatherUtil.dateFormatter(dateFormat: "EEEE | dd MMM yyyy").string(from: Date())
-        feelsLike.text = WeatherUtil.formatTemperature(KelvinCelsiusTemperature: weatherData.main.feelsLike)
-        tempMax.text = WeatherUtil.formatTemperature(KelvinCelsiusTemperature: weatherData.main.tempMax)
-        tempMin.text = WeatherUtil.formatTemperature(KelvinCelsiusTemperature: weatherData.main.tempMin)
+        feelsLike.text = WeatherUtil.formatTemperature(kelvinCelsiusTemperature: weatherData.main.feelsLike)
+        tempMax.text = WeatherUtil.formatTemperature(kelvinCelsiusTemperature: weatherData.main.tempMax)
+        tempMin.text = WeatherUtil.formatTemperature(kelvinCelsiusTemperature: weatherData.main.tempMin)
         humidity.text = WeatherUtil.formatHumidity(humidity: weatherData.main.humidity)
         pressure.text = WeatherUtil.formatPressure(pressure: weatherData.main.pressure)
         windSpeed.text = WeatherUtil.formatWindSpeed(windSpeed: weatherData.wind.speed)

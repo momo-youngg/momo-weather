@@ -17,9 +17,13 @@ struct WeatherUtil {
         formatter.dateFormat = dateFormat
         return formatter
     }
+    
+    static func transformFromKelvinToCelsious(kelvinCelsiusTemperature: Double) -> Double{
+        kelvinCelsiusTemperature - 273.0
+    }
 
-    static func formatTemperature(KelvinCelsiusTemperature: Double) -> String {
-        return "\(String(format: "%.0f", KelvinCelsiusTemperature - 273.0))\(WeatherUtil.degree)"
+    static func formatTemperature(kelvinCelsiusTemperature: Double) -> String {
+        return "\(String(format: "%.0f", kelvinCelsiusTemperature - 273.0))\(WeatherUtil.degree)"
     }
     
     static func formatHumidity(humidity: Int) -> String {

@@ -263,7 +263,7 @@ struct ForecastWeatherDataResponse: Decodable {
                 let date = Date(timeIntervalSince1970: Double(list[index].dt))
                 let dateFormat: String = {
                     if (index == 0 || Calendar.current.component(Calendar.Component.hour, from: date) == 0) {
-                        return "M/D HH:mm"
+                        return "M/d HH:mm"
                     } else {
                         return "HH:mm"
                     }
@@ -275,13 +275,13 @@ struct ForecastWeatherDataResponse: Decodable {
     
     var graphMinTempValueInfo: [Double] {
         get {
-            list.map{ $0.main.tempMin }
+            list.map{ WeatherUtil.transformFromKelvinToCelsious(kelvinCelsiusTemperature: $0.main.tempMin)  }
         }
     }
     
     var graphMaxTempValueInfo: [Double] {
         get{
-            list.map{ $0.main.tempMax }
+            list.map{ WeatherUtil.transformFromKelvinToCelsious(kelvinCelsiusTemperature: $0.main.tempMax) }
         }
     }
     
