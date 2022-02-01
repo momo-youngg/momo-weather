@@ -429,27 +429,62 @@
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="070-Dk-oAz" customClass="GraphView" customModule="MomoWeather" customModuleProvider="target">
-                                <rect key="frame" x="10" y="188" width="408" height="604"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forecast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctR-Sq-K03">
+                                <rect key="frame" x="30" y="118" width="368" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="72t-ms-AG2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="100"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0bF-Ci-lc2">
+                                <rect key="frame" x="30" y="198" width="368" height="664"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="79h-KD-oR4">
+                                    <rect key="frame" x="0.0" y="0.0" width="368" height="664"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="070-Dk-oAz" customClass="GraphView" customModule="MomoWeather" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="368" height="664"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="070-Dk-oAz" secondAttribute="trailing" id="Agc-39-x0C"/>
+                                        <constraint firstItem="070-Dk-oAz" firstAttribute="leading" secondItem="79h-KD-oR4" secondAttribute="leading" id="Elq-L9-UTO"/>
+                                        <constraint firstItem="070-Dk-oAz" firstAttribute="top" secondItem="79h-KD-oR4" secondAttribute="top" id="dei-4o-BiO"/>
+                                        <constraint firstAttribute="bottom" secondItem="070-Dk-oAz" secondAttribute="bottom" id="ehj-fk-cjy"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="regular"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </visualEffectView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="c8G-HW-XOm"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="uAt-kh-cn3" secondAttribute="trailing" id="42m-Ee-Lpu"/>
                             <constraint firstItem="uAt-kh-cn3" firstAttribute="top" secondItem="p7I-yr-dUz" secondAttribute="top" id="65r-ij-GAY"/>
+                            <constraint firstItem="c8G-HW-XOm" firstAttribute="bottom" secondItem="0bF-Ci-lc2" secondAttribute="bottom" constant="30" id="6t9-y5-oes"/>
+                            <constraint firstItem="ctR-Sq-K03" firstAttribute="leading" secondItem="c8G-HW-XOm" secondAttribute="leading" constant="30" id="8LC-45-ipO"/>
+                            <constraint firstItem="ctR-Sq-K03" firstAttribute="top" secondItem="c8G-HW-XOm" secondAttribute="top" constant="30" id="E2P-nU-C0T"/>
                             <constraint firstAttribute="bottom" secondItem="uAt-kh-cn3" secondAttribute="bottom" id="H5B-Ls-MOB"/>
-                            <constraint firstItem="070-Dk-oAz" firstAttribute="leading" secondItem="c8G-HW-XOm" secondAttribute="leading" constant="10" id="HIJ-ug-rsY"/>
-                            <constraint firstItem="c8G-HW-XOm" firstAttribute="trailing" secondItem="070-Dk-oAz" secondAttribute="trailing" constant="10" id="O0V-dM-ycF"/>
+                            <constraint firstItem="c8G-HW-XOm" firstAttribute="trailing" secondItem="0bF-Ci-lc2" secondAttribute="trailing" constant="30" id="WNL-8H-wzh"/>
                             <constraint firstItem="uAt-kh-cn3" firstAttribute="leading" secondItem="p7I-yr-dUz" secondAttribute="leading" id="ba6-db-qtK"/>
-                            <constraint firstItem="c8G-HW-XOm" firstAttribute="bottom" secondItem="070-Dk-oAz" secondAttribute="bottom" constant="100" id="c2P-bD-6Eg"/>
-                            <constraint firstItem="070-Dk-oAz" firstAttribute="top" secondItem="c8G-HW-XOm" secondAttribute="top" constant="100" id="ibK-Mx-k4X"/>
+                            <constraint firstItem="0bF-Ci-lc2" firstAttribute="top" secondItem="ctR-Sq-K03" secondAttribute="bottom" constant="30" id="i8i-ki-RQ0"/>
+                            <constraint firstItem="c8G-HW-XOm" firstAttribute="trailing" secondItem="ctR-Sq-K03" secondAttribute="trailing" constant="30" id="lww-Xl-FGu"/>
+                            <constraint firstItem="0bF-Ci-lc2" firstAttribute="leading" secondItem="c8G-HW-XOm" secondAttribute="leading" constant="30" id="rjn-4o-S5W"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rQX-Eu-SaK"/>
                     <connections>
                         <outlet property="backgroundView" destination="uAt-kh-cn3" id="bkH-bM-ED8"/>
                         <outlet property="graphView" destination="070-Dk-oAz" id="bTH-2j-VXt"/>
+                        <outlet property="titleLabel" destination="ctR-Sq-K03" id="smN-Ph-mba"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Eq-gZ-qUl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -11,6 +11,7 @@ class WeatherGraphViewController: UIViewController {
     
     @IBOutlet var graphView: GraphView!
     @IBOutlet var backgroundView: UIView!
+    @IBOutlet var titleLabel: UILabel!
     var weatherData: CurrentWeatherDataResponse!
     let openWhetherClient: OpenWeatherClient = OpenWeatherClient()
     
@@ -19,7 +20,8 @@ class WeatherGraphViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         GradientUtil.setGradientToView(gradientColor: weatherData.weather[0].gradientColor, view: backgroundView)
-
+        titleLabel.setTextHeightToMaxFit()
+        
         openWhetherClient.get5Day3HourForecastData(lat: weatherData.coord.lat,
                                                    lon: weatherData.coord.lon) { result, forecast in
             print("result")
