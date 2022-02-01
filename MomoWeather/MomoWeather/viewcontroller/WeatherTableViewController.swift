@@ -19,11 +19,17 @@ class WeatherTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        AppUtil.lockOrientation(.portrait, andRotateTo: .portrait)
         
         navigationItem.title = "Weather"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label]
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        AppUtil.lockOrientation(.all)
     }
     
     override func viewDidLoad() {

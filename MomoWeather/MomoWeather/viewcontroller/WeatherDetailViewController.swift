@@ -25,11 +25,17 @@ class WeatherDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        AppUtil.lockOrientation(.portrait, andRotateTo: .portrait)
         
         navigationItem.title = weatherData.name
         navigationItem.largeTitleDisplayMode = .never
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.tintColor = .white
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        AppUtil.lockOrientation(.all)
     }
 
     override func viewDidLoad() {

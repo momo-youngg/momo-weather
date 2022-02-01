@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FA6E28A927A861EA004ADA31 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E28A827A861EA004ADA31 /* GraphView.swift */; };
 		FA6E28AB27A88C71004ADA31 /* WeatherGraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E28AA27A88C71004ADA31 /* WeatherGraphViewController.swift */; };
+		FA6E28AD27A99174004ADA31 /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E28AC27A99174004ADA31 /* AppUtil.swift */; };
 		FA86CD8D27A3F27C007826D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CD8C27A3F27C007826D7 /* AppDelegate.swift */; };
 		FA86CD8F27A3F27C007826D7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CD8E27A3F27C007826D7 /* SceneDelegate.swift */; };
 		FA86CD9427A3F27C007826D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA86CD9227A3F27C007826D7 /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		FA6E28A827A861EA004ADA31 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		FA6E28AA27A88C71004ADA31 /* WeatherGraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherGraphViewController.swift; sourceTree = "<group>"; };
+		FA6E28AC27A99174004ADA31 /* AppUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
 		FA86CD8927A3F27C007826D7 /* MomoWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MomoWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA86CD8C27A3F27C007826D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA86CD8E27A3F27C007826D7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			children = (
 				FA86CDDC27A5AA56007826D7 /* GradientUtil.swift */,
 				FA86CDE427A6DB5C007826D7 /* WeatherUtil.swift */,
+				FA6E28AC27A99174004ADA31 /* AppUtil.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				FA6E28AB27A88C71004ADA31 /* WeatherGraphViewController.swift in Sources */,
 				FA86CDDA27A5A228007826D7 /* WeatherMainNavigationController.swift in Sources */,
 				FA6E28A927A861EA004ADA31 /* GraphView.swift in Sources */,
+				FA6E28AD27A99174004ADA31 /* AppUtil.swift in Sources */,
 				FA86CDDD27A5AA56007826D7 /* GradientUtil.swift in Sources */,
 				FA86CDC127A40C64007826D7 /* OpenWeatherResponse.swift in Sources */,
 				FA86CDCC27A48EE0007826D7 /* WeatherTableViewCell.swift in Sources */,
