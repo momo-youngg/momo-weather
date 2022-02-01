@@ -10,11 +10,25 @@ import UIKit
 class WeatherGraphViewController: UIViewController {
     
     @IBOutlet var graphView: GraphView!
-
+    @IBOutlet var backgroundView: UIView!
+    var weatherData: CurrentWeatherDataResponse!
+    let openWhetherClient: OpenWeatherClient = OpenWeatherClient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-                
+        
+        GradientUtil.setGradientToView(gradientColor: weatherData.weather[0].gradientColor, view: backgroundView)
+
+        openWhetherClient.get5Day3HourForecastData(lat: weatherData.coord.lat,
+                                                   lon: weatherData.coord.lon) { result, forecast in
+            print("result")
+            print(result)
+            print("forecast")
+            print(forecast)
+        }
+        
+        
         let graphInfo: GraphInfo = GraphInfo(graphKeyInfo: [
             "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"
         ],

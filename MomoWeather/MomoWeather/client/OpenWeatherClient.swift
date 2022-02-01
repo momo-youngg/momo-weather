@@ -26,6 +26,16 @@ class OpenWeatherClient {
             completionHandler: completionHandler)
     }
     
+    func get5Day3HourForecastData(lat: Double,
+                                  lon: Double,
+                                  completionHandler:
+                                  @escaping (Bool, ForecastWeatherDataResponse) -> Void) {
+        get(uri: "/data/2.5/forecast",
+            parameters: ["lat": String(lat), "lon": String(lon)],
+            responseType: ForecastWeatherDataResponse.self,
+            completionHandler: completionHandler)
+    }
+    
     func getCities() -> [City] {
         //TODO 할수 있다면 동적으로 받아오도록 수정
         return [

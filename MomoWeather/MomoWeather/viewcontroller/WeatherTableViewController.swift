@@ -75,7 +75,7 @@ class WeatherTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "WetherDetailSegue" {
+        if segue.identifier == "WeatherDetailSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let destinationController = segue.destination as! WeatherDetailViewController
                 destinationController.weatherData = self.weathersByCity[indexPath.row]

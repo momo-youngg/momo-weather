@@ -109,7 +109,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="subview" destination="kNI-RC-aE5" id="hsX-5a-dMH"/>
-                                    <segue destination="qxJ-Uh-HyZ" kind="show" identifier="WetherDetailSegue" id="8JX-qL-e6c"/>
+                                    <segue destination="qxJ-Uh-HyZ" kind="show" identifier="WeatherDetailSegue" id="8JX-qL-e6c"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -215,7 +215,7 @@
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="How it would be like in the future?"/>
                                                     <connections>
-                                                        <segue destination="QAu-72-cKH" kind="show" id="5DM-XV-XUg"/>
+                                                        <segue destination="QAu-72-cKH" kind="show" identifier="WeatherGraphSegue" id="5DM-XV-XUg"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -425,28 +425,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uAt-kh-cn3" userLabel="Background View">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="070-Dk-oAz" customClass="GraphView" customModule="MomoWeather" customModuleProvider="target">
                                 <rect key="frame" x="10" y="188" width="408" height="604"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="c8G-HW-XOm"/>
-                        <color key="backgroundColor" systemColor="systemBlueColor"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="uAt-kh-cn3" secondAttribute="trailing" id="42m-Ee-Lpu"/>
+                            <constraint firstItem="uAt-kh-cn3" firstAttribute="top" secondItem="p7I-yr-dUz" secondAttribute="top" id="65r-ij-GAY"/>
+                            <constraint firstAttribute="bottom" secondItem="uAt-kh-cn3" secondAttribute="bottom" id="H5B-Ls-MOB"/>
                             <constraint firstItem="070-Dk-oAz" firstAttribute="leading" secondItem="c8G-HW-XOm" secondAttribute="leading" constant="10" id="HIJ-ug-rsY"/>
                             <constraint firstItem="c8G-HW-XOm" firstAttribute="trailing" secondItem="070-Dk-oAz" secondAttribute="trailing" constant="10" id="O0V-dM-ycF"/>
+                            <constraint firstItem="uAt-kh-cn3" firstAttribute="leading" secondItem="p7I-yr-dUz" secondAttribute="leading" id="ba6-db-qtK"/>
                             <constraint firstItem="c8G-HW-XOm" firstAttribute="bottom" secondItem="070-Dk-oAz" secondAttribute="bottom" constant="100" id="c2P-bD-6Eg"/>
                             <constraint firstItem="070-Dk-oAz" firstAttribute="top" secondItem="c8G-HW-XOm" secondAttribute="top" constant="100" id="ibK-Mx-k4X"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rQX-Eu-SaK"/>
                     <connections>
+                        <outlet property="backgroundView" destination="uAt-kh-cn3" id="bkH-bM-ED8"/>
                         <outlet property="graphView" destination="070-Dk-oAz" id="bTH-2j-VXt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Eq-gZ-qUl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1914" y="-84"/>
+            <point key="canvasLocation" x="1913.5514018691588" y="-84.233261339092877"/>
         </scene>
     </scenes>
     <resources>
@@ -461,6 +469,9 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

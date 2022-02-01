@@ -30,7 +30,6 @@ class WeatherDetailViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .never
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.tintColor = .white
-        print(Date())
     }
 
     override func viewDidLoad() {
@@ -70,5 +69,12 @@ class WeatherDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "WeatherGraphSegue" {
+            let destinationController = segue.destination as! WeatherGraphViewController
+            destinationController.weatherData = self.weatherData
+            destinationController.hidesBottomBarWhenPushed = true
+        }
+    }
 }

@@ -235,3 +235,80 @@ struct OpenWeatherSys: Decodable {
     }
 }
 
+
+struct ForecastWeatherDataResponse: Decodable {
+    
+    enum CodingKeys: String, CodingKey {
+        case cod, message, cnt, list, city
+    }
+    
+    let cod: String
+    let message: Int
+    let cnt: Int
+    let list: [OpenWeatherForecast]
+    let city: OpenWeatherCity
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        cod = try container.decode(String.self, forKey: .cod)
+        message = try container.decode(Int.self, forKey: .message)
+        cnt = try container.decode(Int.self, forKey: .cnt)
+        list = try container.decode([OpenWeatherForecast].self, forKey: .list)
+        city = try container.decode(OpenWeatherCity.self, forKey: .city)
+    }
+}
+
+struct OpenWeatherForecast: Decodable {
+    
+    enum CodingKeys: String, CodingKey {
+        case dt, main, weather, clouds, wind, visibility, pop
+        case dtTxt = "dt_txt"
+    }
+    
+    let dt: Int
+    let main: OpenWeatherMain
+    let weather: [OpenWeatherWeather]
+    let clouds: OpenWeatherClouds
+    let wind: OpenWeatherWind
+    let visibility: Int
+    let pop: Double
+    let dtTxt: String
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        dt = try container.decode(Int.self, forKey: .dt)
+        main = try container.decode(OpenWeatherMain.self, forKey: .main)
+        weather = try container.decode([OpenWeatherWeather].self, forKey: .weather)
+        clouds = try container.decode(OpenWeatherClouds.self, forKey: .clouds)
+        wind = try container.decode(OpenWeatherWind.self, forKey: .wind)
+        visibility = try container.decode(Int.self, forKey: .visibility)
+        pop = try container.decode(Double.self, forKey: .pop)
+        dtTxt = try container.decode(String.self, forKey: .dtTxt)
+    }
+}
+
+struct OpenWeatherCity: Decodable {
+    
+    enum CodingKeys: String, CodingKey {
+        case id, name, coord, country, timezone, sunrise, sunset
+    }
+    
+    let id: Int
+    let name: String
+    let coord: OpenWeatherCoord
+    let country: String
+    let timezone: Int
+    let sunrise: Int
+    let sunset: Int
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(Int.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        coord = try container.decode(OpenWeatherCoord.self, forKey: .coord)
+        country = try container.decode(String.self, forKey: .country)
+        timezone = try container.decode(Int.self, forKey: .timezone)
+        sunrise = try container.decode(Int.self, forKey: .sunrise)
+        sunset = try container.decode(Int.self, forKey: .sunset)
+    }
+}
