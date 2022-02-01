@@ -261,7 +261,7 @@ struct ForecastWeatherDataResponse: Decodable {
             list.indices.map{ index in
                 let date = Date(timeIntervalSince1970: Double(list[index].dt))
                 let dateFormat: String = {
-                    if (index == 0 || Calendar.current.component(Calendar.Component.hour, from: date) == 0) {
+                    if (index == 0 || index == (list.count-1) || Calendar.current.component(Calendar.Component.hour, from: date) == 0) {
                         return "M/d HH:mm"
                     } else {
                         return "HH:mm"

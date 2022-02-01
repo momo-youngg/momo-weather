@@ -120,6 +120,7 @@ class GraphView: UIView {
                      outerColor: valueInfo.outerColor,
                      innerRadius: valueInfo.innerRadius,
                      outerRadius: valueInfo.outerRadius)
+            drawChart(points: points, color: valueInfo.outerColor.cgColor)
         }
     }
     
