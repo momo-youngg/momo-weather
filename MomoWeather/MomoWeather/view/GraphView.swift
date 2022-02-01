@@ -30,6 +30,7 @@ struct GraphInfo {
     let fontSize: CGFloat = 11.0
     let lineAndLabelColor: UIColor = UIColor.white
     let lineWidth: Double = 0.5
+    let descriptionWidth: Double = 60.0
 }
 
 
@@ -97,6 +98,7 @@ class GraphView: UIView {
                                  height: mainLayer.frame.height - 2 * graphInfo.space)
         clean()
         drawLabels()
+        drawDescriptionArrow()
         drawHorizontalLines(leftAllValues: leftAllValues,
                             leftDimension: graphInfo.leftGraphValueInfo[0].dimension,
                             rightAllValues: rightAllValues,
@@ -165,7 +167,10 @@ class GraphView: UIView {
         if keys.count > 0 {
             keys.indices.forEach { index in
                 let textLayer = CATextLayer()
-                textLayer.frame = CGRect(x: graphInfo.lineGap * CGFloat(index) - graphInfo.lineGap/2 + graphInfo.space, y: mainLayer.frame.size.height - graphInfo.space/2 - 8, width: graphInfo.lineGap, height: 16)
+                textLayer.frame = CGRect(x: graphInfo.lineGap * CGFloat(index) - graphInfo.lineGap/2 + graphInfo.space,
+                                         y: mainLayer.frame.size.height - graphInfo.space/2 - 8,
+                                         width: graphInfo.lineGap,
+                                         height: 16)
                 textLayer.foregroundColor = graphInfo.lineAndLabelColor.cgColor
                 textLayer.backgroundColor = UIColor.clear.cgColor
                 textLayer.alignmentMode = CATextLayerAlignmentMode.center
@@ -190,6 +195,45 @@ class GraphView: UIView {
                 }
             }
         }
+    }
+    
+    private func drawDescriptionArrow() {
+        guard let graphInfo = graphInfo else {
+            return
+        }
+        //왼쪽 그리기
+        graphInfo.leftGraphValueInfo.indices.forEach { index in
+            let textLayer = CATextLayer()
+            textLayer.frame = CGRect(x: graphInfo.space/2 + Double(index) * graphInfo.descriptionWidth ,
+                                     y: -1 * (graphInfo.space/2) - graphInfo.fontSize/2,
+                                     width: graphInfo.descriptionWidth,
+                                     height: 16)
+            textLayer.foregroundColor = graphInfo.leftGraphValueInfo[index].outerColor.cgColor
+            textLayer.backgroundColor = UIColor.clear.cgColor
+            textLayer.alignmentMode = CATextLayerAlignmentMode.left
+            textLayer.contentsScale = UIScreen.main.scale
+            textLayer.font = CTFontCreateWithName(UIFont.systemFont(ofSize: 0).fontName as CFString, 0, nil)
+            textLayer.fontSize = graphInfo.fontSize
+            textLayer.string = "←\(graphInfo.leftGraphValueInfo[index].description)"
+            gridLayer.addSublayer(textLayer)
+        }
+        
+        graphInfo.rightGraphValueInfo.indices.forEach { index in
+            let textLayer = CATextLayer()
+            textLayer.frame = CGRect(x: gridLayer.frame.width - graphInfo.space/2 - Double(index+1) * graphInfo.descriptionWidth ,
+                                     y: -1 * (graphInfo.space/2) - graphInfo.fontSize/2,
+                                     width: graphInfo.descriptionWidth,
+                                     height: 16)
+            textLayer.foregroundColor = graphInfo.rightGraphValueInfo[index].outerColor.cgColor
+            textLayer.backgroundColor = UIColor.clear.cgColor
+            textLayer.alignmentMode = CATextLayerAlignmentMode.right
+            textLayer.contentsScale = UIScreen.main.scale
+            textLayer.font = CTFontCreateWithName(UIFont.systemFont(ofSize: 0).fontName as CFString, 0, nil)
+            textLayer.fontSize = graphInfo.fontSize
+            textLayer.string = "\(graphInfo.rightGraphValueInfo[index].description)→"
+            gridLayer.addSublayer(textLayer)
+        }
+
     }
         
     private func drawHorizontalLines(leftAllValues: [Double],
