@@ -34,8 +34,6 @@ class WeatherDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(weatherData!)
-        // Do any additional setup after loading the view.
         weatherDescription.text = weatherData.weather[0].description.capitalized
         temperature.text = WeatherUtil.formatTemperature(kelvinCelsiusTemperature: weatherData.main.temp)
         weatherIcon.image = UIImage(systemName: weatherData.weather[0].sfSymbolName)
@@ -59,16 +57,6 @@ class WeatherDetailViewController: UIViewController {
         
         GradientUtil.setGradientToView(gradientColor: weatherData.weather[0].gradientColor, view: backgroundView)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "WeatherGraphSegue" {

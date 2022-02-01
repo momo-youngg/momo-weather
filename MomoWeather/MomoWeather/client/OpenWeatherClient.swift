@@ -37,7 +37,6 @@ class OpenWeatherClient {
     }
     
     func getCities() -> [City] {
-        //TODO 할수 있다면 동적으로 받아오도록 수정
         return [
             City(nameInKorean: "공주", id: 1842616),
             City(nameInKorean: "광주(전라남도)", id: 1841808),
@@ -70,7 +69,6 @@ class OpenWeatherClient {
             URLQueryItem(name: key, value: parameters[key])
         }
         urlComponents.queryItems?.append(URLQueryItem(name: "appId", value: apiKey))
-//        urlComponents.queryItems?.append(URLQueryItem(name: "lang", value: "kr"))
         return urlComponents.url
     }
     

@@ -46,7 +46,6 @@ struct CurrentWeatherDataResponse: Decodable, Hashable {
         wind = try container.decode(OpenWeatherWind.self, forKey: .wind)
         clouds = try container.decode(OpenWeatherClouds.self, forKey: .clouds)
         dt = try container.decode(Int.self, forKey: .dt)
-//        sys = try container.decode(OpenWeatherSys.self, forKey: .sys)
         timezone = try container.decode(Int.self, forKey: .timezone)
         id = try container.decode(Int.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)

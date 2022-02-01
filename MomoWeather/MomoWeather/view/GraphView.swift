@@ -35,24 +35,9 @@ struct GraphInfo {
 
 class GraphView: UIView {
     
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
-    
-    /// Contains mainLayer and label for each data entry
     private let scrollView: UIScrollView = UIScrollView()
-    
-    /// Contains dataLayer and gradientLayer
     private let mainLayer: CALayer = CALayer()
-    
-    /// Contains the main line which represents the data
     private let dataLayer: CALayer = CALayer()
-    
-    /// Contains horizontal lines
     private let gridLayer: CALayer = CALayer()
     
     var graphInfo: GraphInfo? = nil {
@@ -84,7 +69,6 @@ class GraphView: UIView {
         self.backgroundColor = .clear
     }
     
-    //main
     override func layoutSubviews() {
         guard let graphInfo = graphInfo else {
             return
@@ -113,7 +97,10 @@ class GraphView: UIView {
                                  height: mainLayer.frame.height - 2 * graphInfo.space)
         clean()
         drawLabels()
-        drawHorizontalLines(leftAllValues: leftAllValues, leftDimension: graphInfo.leftGraphValueInfo[0].dimension, rightAllValues: rightAllValues, rightDimension: graphInfo.rightGraphValueInfo[0].dimension)
+        drawHorizontalLines(leftAllValues: leftAllValues,
+                            leftDimension: graphInfo.leftGraphValueInfo[0].dimension,
+                            rightAllValues: rightAllValues,
+                            rightDimension: graphInfo.rightGraphValueInfo[0].dimension)
 
         graphInfo.leftGraphValueInfo.forEach { valueInfo in
             let points = convertValueToPoint(allValues: leftAllValues, targetValues: valueInfo.values)
@@ -204,8 +191,11 @@ class GraphView: UIView {
             }
         }
     }
-    
-    private func drawHorizontalLines(leftAllValues: [Double], leftDimension: String, rightAllValues: [Double], rightDimension: String) {
+        
+    private func drawHorizontalLines(leftAllValues: [Double],
+                                     leftDimension: String,
+                                     rightAllValues: [Double],
+                                     rightDimension: String) {
         guard let graphInfo = graphInfo else {
             return
         }
@@ -234,7 +224,10 @@ class GraphView: UIView {
             }
             gridLayer.addSublayer(lineLayer)
             
-            func addTextLayer(allValue: [Double], x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, textAlignMode: CATextLayerAlignmentMode, dimension: String) {
+            func addTextLayer(allValue: [Double],
+                              x: CGFloat, y: CGFloat,
+                              width: CGFloat, height: CGFloat,
+                              textAlignMode: CATextLayerAlignmentMode, dimension: String) {
                 var minMaxGap:CGFloat = 0
                 var lineValue:Int = 0
                 if let max = allValue.max(), let min = allValue.min() {
@@ -255,8 +248,14 @@ class GraphView: UIView {
                 gridLayer.addSublayer(textLayer)
             }
             
-            addTextLayer(allValue: leftAllValues, x: 4, y: height, width: 50, height: 16, textAlignMode: .left, dimension: leftDimension)
-            addTextLayer(allValue: rightAllValues, x: 0, y: height, width: gridLayer.frame.width-4, height: 16, textAlignMode: .right, dimension: rightDimension)
+            addTextLayer(allValue: leftAllValues,
+                         x: 4, y: height,
+                         width: 50, height: 16,
+                         textAlignMode: .left, dimension: leftDimension)
+            addTextLayer(allValue: rightAllValues,
+                         x: 0, y: height,
+                         width: gridLayer.frame.width-4, height: 16,
+                         textAlignMode: .right, dimension: rightDimension)
         }
     }
     
@@ -270,7 +269,8 @@ class GraphView: UIView {
         gridLayer.sublayers?.forEach({$0.removeFromSuperlayer()})
     }
 
-    private func drawDots(points: [CGPoint], innerColor: UIColor, outerColor: UIColor ,innerRadius: Double, outerRadius: Double) {
+    private func drawDots(points: [CGPoint], innerColor: UIColor,
+                          outerColor: UIColor ,innerRadius: Double, outerRadius: Double) {
         guard let graphInfo = graphInfo else {
             return
         }
