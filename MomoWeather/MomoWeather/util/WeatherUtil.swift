@@ -31,7 +31,7 @@ struct WeatherUtil {
     }
     
     static func formatHumidity(humidity: Int) -> String {
-        return "\(humidity)\(celsiusDegree)"
+        return "\(humidity)\(percent)"
     }
     
     static func formatPressure(pressure: Int) -> String {

@@ -19,7 +19,7 @@ class WeatherTableViewCellContent: UIView {
         cityName.text = weatherData.name
         weatherIcon.image = UIImage(systemName: weatherData.weather[0].sfSymbolName)
         temperature.text = WeatherUtil.formatTemperature(kelvinCelsiusTemperature: weatherData.main.temp)
-        humidity.text = WeatherUtil.formatHumidity(humidity: weatherData.main.humidity)
+        humidity.text = "hum.\(WeatherUtil.formatHumidity(humidity: weatherData.main.humidity))"
         GradientUtil.setGradientToView(
             gradientColor: weatherData.weather[0].gradientColor,
             view: backgroundView
