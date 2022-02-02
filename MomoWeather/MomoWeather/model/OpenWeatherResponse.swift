@@ -9,13 +9,12 @@ import Foundation
 
 struct CurrentWeatherDataResponse: Decodable, Hashable {
     
-    //TODO hashable 수정하기
     func hash(into hasher: inout Hasher) {
-        
+        hasher.combine("\(id)\(coord.lon)\(coord.lat)")
     }
 
     static func == (lhs: CurrentWeatherDataResponse, rhs: CurrentWeatherDataResponse) -> Bool {
-        return false
+        return (lhs.id == rhs.id) && (lhs.coord.lon == rhs.coord.lon) && (lhs.coord.lat == rhs.coord.lat)
     }
     
     
