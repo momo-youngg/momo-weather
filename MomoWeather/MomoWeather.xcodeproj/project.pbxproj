@@ -16,8 +16,6 @@
 		FA86CD9627A3F27C007826D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA86CD9527A3F27C007826D7 /* Assets.xcassets */; };
 		FA86CD9927A3F27C007826D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA86CD9727A3F27C007826D7 /* LaunchScreen.storyboard */; };
 		FA86CDA427A3F27D007826D7 /* MomoWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDA327A3F27D007826D7 /* MomoWeatherTests.swift */; };
-		FA86CDAE27A3F27D007826D7 /* MomoWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDAD27A3F27D007826D7 /* MomoWeatherUITests.swift */; };
-		FA86CDB027A3F27D007826D7 /* MomoWeatherUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDAF27A3F27D007826D7 /* MomoWeatherUITestsLaunchTests.swift */; };
 		FA86CDBE27A3F389007826D7 /* OpenWeatherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDBD27A3F389007826D7 /* OpenWeatherClient.swift */; };
 		FA86CDC127A40C64007826D7 /* OpenWeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDC027A40C64007826D7 /* OpenWeatherResponse.swift */; };
 		FA86CDC427A466B8007826D7 /* OpenWeatherClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86CDC327A466B8007826D7 /* OpenWeatherClientTests.swift */; };
@@ -62,8 +60,6 @@
 		FA86CD9F27A3F27D007826D7 /* MomoWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MomoWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA86CDA327A3F27D007826D7 /* MomoWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoWeatherTests.swift; sourceTree = "<group>"; };
 		FA86CDA927A3F27D007826D7 /* MomoWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MomoWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA86CDAD27A3F27D007826D7 /* MomoWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoWeatherUITests.swift; sourceTree = "<group>"; };
-		FA86CDAF27A3F27D007826D7 /* MomoWeatherUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomoWeatherUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FA86CDBD27A3F389007826D7 /* OpenWeatherClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherClient.swift; sourceTree = "<group>"; };
 		FA86CDC027A40C64007826D7 /* OpenWeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherResponse.swift; sourceTree = "<group>"; };
 		FA86CDC327A466B8007826D7 /* OpenWeatherClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherClientTests.swift; sourceTree = "<group>"; };
@@ -107,7 +103,6 @@
 			children = (
 				FA86CD8B27A3F27C007826D7 /* MomoWeather */,
 				FA86CDA227A3F27D007826D7 /* MomoWeatherTests */,
-				FA86CDAC27A3F27D007826D7 /* MomoWeatherUITests */,
 				FA86CD8A27A3F27C007826D7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -148,15 +143,6 @@
 				FA86CDA327A3F27D007826D7 /* MomoWeatherTests.swift */,
 			);
 			path = MomoWeatherTests;
-			sourceTree = "<group>";
-		};
-		FA86CDAC27A3F27D007826D7 /* MomoWeatherUITests */ = {
-			isa = PBXGroup;
-			children = (
-				FA86CDAD27A3F27D007826D7 /* MomoWeatherUITests.swift */,
-				FA86CDAF27A3F27D007826D7 /* MomoWeatherUITestsLaunchTests.swift */,
-			);
-			path = MomoWeatherUITests;
 			sourceTree = "<group>";
 		};
 		FA86CDBC27A3F366007826D7 /* client */ = {
@@ -384,8 +370,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA86CDAE27A3F27D007826D7 /* MomoWeatherUITests.swift in Sources */,
-				FA86CDB027A3F27D007826D7 /* MomoWeatherUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
